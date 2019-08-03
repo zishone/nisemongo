@@ -1,0 +1,61 @@
+{
+  "name": "nisemongo",
+  "version": "0.0.1",
+  "description": "A node-mongodb-native mocker. Nise means fake in Japanese.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "cleanup": "rimraf dist && rimraf coverage && rimraf .nyc_output && rimraf docs",
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "docs": "typedoc --out docs --mode modules --tsconfig tsconfig.json src && touch docs/.nojekyll",
+    "docs:deploy": "npm run docs && gh-pages --dotfiles --dist docs",
+    "test": "mocha --require ts-node/register test/**/*.test.ts",
+    "test:coverage": "nyc --reporter=lcov --include dist npm run test",
+    "test:coveralls": "cat coverage/lcov.info | coveralls",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zishone/nisemongo.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mocker",
+    "mock",
+    "mongo",
+    "unit",
+    "test"
+  ],
+  "author": "Zishran Julbert Garces <zishgarces@gmail.com> (https://github.com/zishone)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zishone/nisemongo/issues"
+  },
+  "homepage": "https://zishone.github.io/nisemongo/",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/debug": "^4.1.4",
+    "@types/mocha": "^5.2.7",
+    "@types/mongodb": "^3.1.31",
+    "@types/node": "^12.6.9",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.5",
+    "gh-pages": "^2.1.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typedoc": "^0.15.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "mongodb": "^3.2.1"
+  }
+}
