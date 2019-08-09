@@ -1,1 +1,3 @@
-export const message = 'Hello, World!';
+import { NiseMongoClient } from './NiseMongoClient';
+
+export { NiseMongoClient };
